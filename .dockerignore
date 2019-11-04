@@ -1,0 +1,9 @@
+.idea
+.git
+.gitignore
+/Dockerfile
+/conf/dev.conf
+/*.yaml
+/test*.php
+/vendor
+/local

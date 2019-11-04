@@ -1,4 +1,4 @@
 <?php
-require_once 'includes/autoload.php';
+require_once 'vendor/autoload.php';
 
 date_default_timezone_set('Europe/Madrid');

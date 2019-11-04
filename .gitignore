@@ -3,3 +3,4 @@
 /conf
 /test*.php
 /test*.json
+pubsub_secret.json

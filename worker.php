@@ -18,6 +18,9 @@ if(!$subscription->exists())
     die;
 }
 
+$task_counter = 1;
+echo "Ready" . PHP_EOL;
+echo "Waiting for tasks..." . PHP_EOL;
 while(true)
 {
     $message = false;
@@ -27,7 +30,10 @@ while(true)
     }
     if ($message)
     {
+        echo "New task #" . $task_counter . PHP_EOL;
         sleep(10);
         $subscription->acknowledge($message);
+        echo "Finished #" . $task_counter . PHP_EOL;
+        $task_counter++;
     }
 }

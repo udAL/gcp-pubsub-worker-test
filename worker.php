@@ -1,9 +1,7 @@
 <?php
 require_once './includes/init.php';
 
-/**
- * Funcio per generar i comprovar la subscripcio a PubSub
- */
+// -- Connect to PubSub --
 use Google\Cloud\PubSub\PubSubClient;
 $keyFile = 'pubsub_secret.json' ;
 $pubSub = null;
@@ -18,16 +16,20 @@ if(!$subscription->exists())
     die;
 }
 
+// -- Main loop --
 $task_counter = 1;
 echo "Ready" . PHP_EOL;
 echo "Waiting for tasks..." . PHP_EOL;
 while(true)
 {
+    // -- Waiting for message --
     $message = false;
     foreach ($subscription->pull(['maxMessages' => 1]) as $pullMessage)
     {
         $message = $pullMessage;
     }
+
+    // -- Message received --
     if ($message)
     {
         echo "New task #" . $task_counter . PHP_EOL;
